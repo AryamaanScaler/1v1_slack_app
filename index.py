@@ -10,7 +10,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  print(os.environ.get('TEST'))
   return "Welcome to 1v1 slack app"
 
 @app.route('/schedule_1v1s',methods = ['POST'])
@@ -21,7 +20,7 @@ def schedule_1v1s():
   # logger
   print(f"User ran command: schedule_1v1s\nuser_id: {user_id}\nchannel_id: {channel_id}")
 
-  slack_client = WebClient(config.SLACK_BOT_TOKEN)
+  slack_client = WebClient(os.environ.get('SLACK_BOT_TOKEN'))
   users_info = slack_users(slack_client)
   if not users_info: return "Failed to schedule"
 
