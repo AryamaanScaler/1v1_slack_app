@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+  print(os.environ.get('TEST'))
   return "Welcome to 1v1 slack app"
 
 @app.route('/schedule_1v1s',methods = ['POST'])
