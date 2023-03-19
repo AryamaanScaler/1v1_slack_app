@@ -4,6 +4,7 @@ from slack import WebClient
 from utils import group_random, slack_channel_members, safeget, slack_users
 import config
 import time
+import os
 
 app = Flask(__name__)
 
