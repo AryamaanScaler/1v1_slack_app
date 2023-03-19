@@ -6,8 +6,11 @@ import config
 import time
 
 app = Flask(__name__)
+@app.route('/',)
+def index():
+  return "Welcome to 1v1 slack app"
 
-@app.route('/',methods = ['POST'])
+@app.route('/schedule_1v1s',methods = ['POST'])
 def schedule_1v1s():
   channel_id = request.form.get('channel_id')
   user_id = request.form.get('user_id')
