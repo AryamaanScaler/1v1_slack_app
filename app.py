@@ -6,7 +6,8 @@ import config
 import time
 
 app = Flask(__name__)
-@app.route('/',)
+
+@app.route('/')
 def index():
   return "Welcome to 1v1 slack app"
 
