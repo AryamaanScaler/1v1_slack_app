@@ -1,9 +1,11 @@
 from flask import Flask
 from flask import request
 from slack import WebClient
-from utils import group_random, slack_channel_members, safeget, slack_users
+
+from utils import schedule_1v1, safeget, slack_users
+
 import config
-import time
+from threading import Thread
 import os
 
 app = Flask(__name__)
@@ -31,19 +33,8 @@ def schedule_1v1s():
   if safeget(users_info, user_id, 'email') not in config.ALLOWED_USERS:
     return "Not allowed to perform this action"
 
-  channel_members = slack_channel_members(slack_client, channel_id)
-  if not channel_members: return "Failed to schedule"
+  thread = Thread(target=schedule_1v1, args=(slack_client, channel_id, users_info,))
+  thread.daemon = True
+  thread.start()
 
-  channel_members_info = [safeget(users_info, user_id) for user_id in channel_members]
-  
-  # remove bot
-  channel_members_info = list(filter(lambda user: not safeget(user, 'is_bot'), channel_members_info))
-  
-  # group members
-  member_groups = group_random(channel_members_info)
-
-  for i in range(1):
-    slack_client.chat_postMessage(channel="U04U41MRT8S", text="Hey there :raised_hands:,\nWe have successfully found a match with <@U04U40W200J> for your 1v1 meet this weekend.", parse=True)
-    time.sleep(1)
-
-  return member_groups
+  return "1v1 have start searching :mag:"
