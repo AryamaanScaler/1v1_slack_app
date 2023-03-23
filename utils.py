@@ -36,7 +36,6 @@ def schedule_1v1(slack_client, channel_id, users_info):
   if not channel_members: return None
 
   channel_members_info = [safeget(users_info, user_id) for user_id in channel_members]
-  print(channel_members_info)
   
   # remove bot
   channel_members_info = list(filter(lambda user: not safeget(user, 'is_bot'), channel_members_info))

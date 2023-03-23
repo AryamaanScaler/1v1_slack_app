@@ -34,7 +34,7 @@ def schedule_1v1s():
     return "Not allowed to perform this action"
 
   thread = Thread(target=schedule_1v1, args=(slack_client, channel_id, users_info,))
-  thread.daemon = True
+  # thread.daemon = True
   thread.start()
 
   return "1v1 have start searching :mag:"
