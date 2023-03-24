@@ -14,7 +14,7 @@
   ],
   "crons": [
     {
-      "path": "/",
+      "path": "/api/1v1_schedule",
       "schedule": "0 5 * * *"
     }
   ]
