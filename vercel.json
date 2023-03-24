@@ -6,7 +6,7 @@
           "use": "@vercel/python"
       },
       {
-        "src": "./api/1v1_schedule.py",
+        "src": "./1v1_schedule.py",
         "use": "@vercel/python"
       }
   ],
@@ -15,5 +15,11 @@
           "src": "/(.*)",
           "dest": "/"
       }
+  ],
+  "crons": [
+    {
+      "path": "/1v1_schedule",
+      "schedule": "0 5 * * *"
+    }
   ]
 }
