@@ -8,14 +8,8 @@
   ],
   "routes": [
       {
-          "src": "/",
+          "src": "/(.*)",
           "dest": "/"
       }
-  ],
-  "crons": [
-    {
-      "path": "/api/1v1_schedule",
-      "schedule": "0 5 * * *"
-    }
-  ]
+   ]
 }
