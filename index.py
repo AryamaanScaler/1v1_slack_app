@@ -5,7 +5,6 @@ from slack import WebClient
 from utils import schedule_1v1, safeget, slack_users
 
 import config
-from threading import Thread
 import os
 
 app = Flask(__name__)
@@ -33,8 +32,6 @@ def schedule_1v1s():
   if safeget(users_info, user_id, 'email') not in config.ALLOWED_USERS:
     return "Not allowed to perform this action"
 
-  thread = Thread(target=schedule_1v1, args=(slack_client, channel_id, users_info,))
-  # thread.daemon = True
-  thread.start()
+  schedule_1v1(slack_client, channel_id, users_info)
 
   return "1v1 have start searching :mag:"
