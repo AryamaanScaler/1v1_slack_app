@@ -14,7 +14,7 @@
   ],
   "crons": [
     {
-      "path": "/1v1_schedule.py",
+      "path": "/",
       "schedule": "0 5 * * *"
     }
   ]
