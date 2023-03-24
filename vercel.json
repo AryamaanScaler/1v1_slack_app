@@ -11,9 +11,5 @@
           "src": "/(.*)",
           "dest": "/"
       }
-  ],
-  "functions": {
-    "1v1_schedule.py": {
-    }
-  }
+  ]
 }
