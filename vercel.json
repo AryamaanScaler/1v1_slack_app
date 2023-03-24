@@ -4,10 +4,6 @@
       {
           "src": "./index.py",
           "use": "@vercel/python"
-      },
-      {
-        "src": "./1v1_schedule.py",
-        "use": "@vercel/python"
       }
   ],
   "routes": [
