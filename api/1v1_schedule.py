@@ -1,6 +1,5 @@
 from http.server import BaseHTTPRequestHandler
-from utils import post_message
-from slack import WebClient
+from datetime import datetime
  
 class handler(BaseHTTPRequestHandler):
  
@@ -8,7 +7,5 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-
-    slack_client = WebClient(os.environ.get('SLACK_BOT_TOKEN'))
-    post_message(slack_client, "U04U41MRT8S", "hello")
+    self.wfile.write(str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')).encode())
     return
